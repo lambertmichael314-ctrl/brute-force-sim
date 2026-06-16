@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brute-Force Simulator // Attack Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="hacker-container">
+        <header>
+            <div class="glitch">ATTACK_VECTOR_v{{ version }}</div>
+            <h1>Brute Force Simulator</h1>
+        </header>
+
+        <section class="target-config">
+            <label>Target Authentication Endpoint:</label>
+            <input type="text" id="target-url" value="http://127.0.0.1:5003/login">
+            
+            <label>Target Username:</label>
+            <input type="text" id="target-user" placeholder="e.g. admin">
+            
+            <label>Dictionary Wordlist (Pass-per-line):</label>
+            <textarea id="wordlist" placeholder="password&#10;123456&#10;admin123"></textarea>
+            
+            <button id="run-btn">EXECUTE DICTIONARY ATTACK</button>
+        </section>
+
+        <div id="status-display" class="hidden">
+            <div class="success-banner hidden" id="found-banner">
+                [!] CREDENTIALS IDENTIFIED: <span id="cracked-pw"></span>
+            </div>
+            <div class="log-window" id="log-window">
+                <!-- Attack stream will populate here -->
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
